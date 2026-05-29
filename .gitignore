@@ -9,7 +9,8 @@ code.c
 file.c
 hehe.c
 new.c
-HaVietHoang25280018.pdf
+*.pdf
+*.png
 
 # User-specific files
 *.rsuser
