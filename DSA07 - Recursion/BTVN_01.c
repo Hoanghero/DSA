@@ -16,7 +16,7 @@ int f(int n)
 int f_nrecursion(int n)
 {
     int res = 1;
-    for (int i = 2; i <= n; i++) res *= i;
+    for (int i = 2; i <= n; i++) res *= 2;
     return res;
 }
 
@@ -35,10 +35,7 @@ float g(int n)
 float g_nrecursion(int n)
 {
     float res = 1.0;
-    for (int i = 2; i <= n; i++)
-    {
-        res += i * i;
-    }
+    for (int i = 2; i <= n; i++) res += i * i;
     return res;
 }
 
@@ -57,7 +54,8 @@ int F(int n)
 
 int F_nrecursion(int n)
 {
-    int f1 = 1, f2 = 2, f;
+    if (n <= 2) return 1;
+    int f1 = 1, f2 = 1, f;
     for (int i = 3; i <= n; i++)
     {
         f = f1 + f2;
@@ -84,6 +82,7 @@ int P(int n)
 
 int P_nrecursion(int n)
 {
+    if (n <= 2) return n + 1;
     int P1 = 1, P2 = 2, P3 = 3, P;
     for (int i = 3; i <= n; i++)
     {
@@ -92,16 +91,22 @@ int P_nrecursion(int n)
         P2 = P3;
         P3 = P;
     }
+    return P;
 }
+
 int main()
 {
     time_t t;
     srand((unsigned) time (&t));
     long long res = 1;
-    int n;
+    int n; scanf("%d", &n);
     for (int i = 1; i <= n; i++)
     {
-
+        printf("i: %d:\n", i);
+        printf("f: %d nf: %d\n", f(i), f_nrecursion(i));
+        printf("g: %.1f ng: %.1f\n", g(i), g_nrecursion(i));
+        printf("F: %d nF: %d\n", F(i), F_nrecursion(i));
+        printf("P: %d nP: %d\n\n", P(i), P_nrecursion(i));
     }
     return 0;
 }
