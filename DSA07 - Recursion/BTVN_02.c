@@ -87,7 +87,7 @@ int ham4(int a[], int l, int r, int x)
     int m = (l + r) / 2;
     if (a[m] == x) return m;
     else if (a[m] > x) return ham4(a, l, m - 1, x);
-    else return ham4(a, m + 1, r, x);
+    else return ham4(a, l + 1, r, x);
 }
 
 int check4(int a[], int n, int x)
@@ -102,7 +102,24 @@ int check4(int a[], int n, int x)
     }
     return -1;
 }
+void insertionSort (int arr[],int n) {
+    int key;
+    for (int i = 1; i < n; i++) {
+        key = arr[i];
+        int j = i - 1;
 
+        while (j >= 0) {
+            if (arr[j] > key) {
+                arr[j+1] = arr[j];
+                j--;
+            }
+            else {
+                break;
+            }    
+        }
+        arr[j+1] = key;
+    }
+}
 int main()
 {
     time_t t;
@@ -110,20 +127,23 @@ int main()
     int n; scanf("%d", &n);
     int a[n];
     for (int i = 0; i < n; i++) scanf("%d", &a[i]);
-
+    //Bai1
+    printf("Bai 1\n");
     printf("In mang bang de quy:\n");
     ham1(a, n, 0);
     printf("\n");
     printf("In mang bang vong lap for:\n");
     check1(a, n);
     printf("\n");
-
+    //Bai2
+    printf("Bai 2\n");
     int x; scanf("%d", &x);
     printf("Chi so cua phan tu bang de quy: ");
     printf("%d\n", ham2(a, n, 0, x));
     printf("Chi so cua phan tu bang vong lap for: ");
     printf("%d\n\n", check2(a, n, x));
-
+    //Bai3a
+    printf("Bai 3a\n");
     s.top = -1;
     for (int i = 1; i <= MAXN; i++) s.a[++s.top] = i;
     printf("Phan tu duoc xoa bang de quy: ");
@@ -133,7 +153,8 @@ int main()
     printf("Phan tu duoc xoa vong lap: ");
     check3a(&s);
     printf("\n\n");
-
+    //Bai3b
+    printf("Bai 3b\n");
     q.head = q.tail = -1;
     for (int i = 1; i <= MAXN; i++) q.a[q.tail++] = i;
     printf("Phan tu duoc xoa bang de quy: ");
@@ -144,18 +165,17 @@ int main()
     printf("Phan tu duoc xoa bang vong lap: ");
     check3b(&q);
     printf("\n\n");
-
-    // int b[MAXN] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
-    int b[MAXN];
-    Irandom(b, MAXN, MIN, MAX);
+    //Bai4
+    printf("Bai 4\n");
+    insertionSort(a, n);
     int v; scanf("%d", &v);
     printf("Mang ban dau la: ");
-    for (int i = 0; i < MAXN; i++) printf("%d ", b[i]);
+    for (int i = 0; i < n; i++) printf("%d ", a[i]);
     printf("\n");
     printf("Phan tu can tim la: %d\n", v);
     printf("Chi so cua phan tu can tim bang de quy: ");
-    printf("%d\n", ham4(b, 0, MAXN, v));
+    printf("%d\n", ham4(a, 0, n, v));
     printf("Chi so cua phan tu can tim bang vong lap: ");
-    printf("%d\n", check4(b, MAXN, v));
+    printf("%d\n", check4(a, n, v));
     return 0;
 }
