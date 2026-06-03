@@ -3,7 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-##File nao khong muon push thi bo vao day
+##File/Folder nao khong muon push thi bo vao day
 *.aux
 *.out
 *.synctex.gz
@@ -20,6 +20,12 @@ test1.c
 *.zip
 *.pdf
 *.png
+25280042_KT1.c
+Queue/
+Stack/
+Backtracking/
+Linked Lists/
+output/
 
 # User-specific files
 *.rsuser
