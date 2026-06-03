@@ -4,11 +4,20 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 ##File nao khong muon push thi bo vao day
+*.aux
+*.out
+*.synctex.gz
+*.tex
+*.toc
 nhap.c
 code.c
 file.c
 hehe.c
 new.c
+deche.c
+demo.c
+test1.c
+*.zip
 *.pdf
 *.png
 
