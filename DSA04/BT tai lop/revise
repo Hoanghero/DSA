@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <stdlib.h>
+int danhDau[20] = {0};
+int checkString(char *s, char *z, int *comps) {
+    int count;
+    int lens =strlen(s);
+    for (int u=0; u<lens-1; u++) {
+        count = 0;
+        (*comps)++;
+        if (s[u] - z[0] == 0) {
+            count++;
+            (*comps)++;
+            if (s[u+1] - z[1] == 0) {
+                count++;
+            }
+        }
+        if (count == 2) return 1;
+    }
+    return 0;
+}
+void sinhMang(char arr[], int n, char min, char max) {
+    for (int i = 0; i < n; i++) {
+        arr[i] = min + rand() % (max - min + 1);
+    }
+}
+float trungBinhCong(int arr[], int n, int m) {
+    float tong = 0;
+    for (int i = 0; i < n; i++) {
+        tong += (float)(i * arr[i]);
+    }
+    return tong/m;
+}
+int main() {
+    time_t t;
+    srand((unsigned)time(&t));
+    char s[10], s1[2] = {'a', 'b'};
+    for (int i=0; i<1000000; i++) {
+        int comps=0;
+        sinhMang(s,10,'a','z');
+        checkString(s,s1,&comps);
+        danhDau[comps]++;
+    }
+    for (int j=0; j<21; j++) {
+        if(danhDau[j]!=0) printf("%d: %d\n", j, danhDau[j]);
+    }
+    printf("n = 10, k = 1000000\n");
+    printf("Mean = %.2f\n", trungBinhCong(danhDau,21,1000000));
+    printf("O(n) = n^2");
+}

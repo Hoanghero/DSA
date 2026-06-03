@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+void sinhMang(int arr[], int n, int max, int min) {
+    for (int i = 0; i < n; i++) {
+        arr[i] = rand() % (max - min + 1) + min;
+    }
+}
+int chanLe(int a) {
+    if (a%2==0) return 0;
+    return 1;
+}
+void leftOdd(int arr[], int n, int *totalComps, int *totalShifts) {
+    int key;
+    for (int i = 1; i < n; i++) {
+        int comps = 0, shifts = 0;
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0) {
+            comps++;
+            if (chanLe(arr[j])==0) {
+                shifts++;
+                arr[j+1] = arr[j];
+                j--;
+            }
+            else {
+                break;
+            }    
+        }
+        arr[j+1] = key;
+        (*totalComps)+=comps;
+        (*totalShifts)+=shifts;
+    }
+}
+
+int main() {
+    time_t t;
+    srand((unsigned)time(&t));
+    int a[1001];
+    int totalComps = 0, totalShifts = 0;
+    printf("Mang ban dau: ");
+    sinhMang(a, 10, 1000, 0);
+    for (int i=0; i<10; i++) printf("%d ", a[i]);
+    printf("\n");
+    leftOdd(a,10, &totalComps, &totalShifts);
+    for (int i=0; i<10; i++) printf("%d ", a[i]);
+    printf("\n");
+    printf("Complexity: O(n^2) n*(n+1)/2");
+    return 0;
+}
