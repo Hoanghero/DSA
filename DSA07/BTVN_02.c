@@ -87,7 +87,7 @@ int ham4(int a[], int l, int r, int x)
     int m = (l + r) / 2;
     if (a[m] == x) return m;
     else if (a[m] > x) return ham4(a, l, m - 1, x);
-    else return ham4(a, l + 1, r, x);
+    else return ham4(a, m + 1, r, x);
 }
 
 int check4(int a[], int n, int x)
