@@ -3,7 +3,8 @@
 #include <time.h>
 typedef struct NodeType {
     int data;
-    struct NodeType* left, * right;
+    struct NodeType *left;
+    struct NodeType *right;
 } TreeNode;
 
 typedef struct BinaryTreeType {

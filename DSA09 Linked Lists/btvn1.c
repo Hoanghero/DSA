@@ -24,13 +24,13 @@ node* addAt(node* l, int k, int value) {
         return temp;
     }
     node *temp = (node*)malloc(sizeof(node));
-    for (int i=1; i<k-1; i++) {
+    for (int i=1; i<k-1 && p!=NULL; i++) {
         p=p->next;
     }
+    if (p==NULL) return l;
     temp->data = value;
     temp->next = p->next;
     p->next = temp;
-    free(temp);
     return l;
 }
 node* deleteAt(node* l, int k) {
@@ -42,11 +42,11 @@ node* deleteAt(node* l, int k) {
         return l;
     }
     node* temp = (node*)malloc(sizeof(node));
-    for (int i=1; i<k-1; i++) {
+    for (int i=1; i<k-1 && p!=NULL; i++) {
         p=p->next;
     }
-    temp = p->next->next;
-    p->next = temp;
+    temp = p->next;
+    p->next = p->next->next;
     free(temp);
     return l;
 }
