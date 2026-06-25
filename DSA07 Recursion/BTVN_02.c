@@ -71,14 +71,14 @@ queue q;
 
 void ham3b(queue* q)
 {
-    if (q->head >= q->tail) return;
+    if (q->head > q->tail) return;
     printf("%d ", q->a[q->head++]);
     ham3b(q);
 }
 
 void check3b(queue *q)
 {
-    while(q->head < q->tail) printf("%d ", q->a[q->head++]);
+    while(q->head <= q->tail) printf("%d ", q->a[q->head++]);
 }
 
 int ham4(int a[], int l, int r, int x)
@@ -87,7 +87,7 @@ int ham4(int a[], int l, int r, int x)
     int m = (l + r) / 2;
     if (a[m] == x) return m;
     else if (a[m] > x) return ham4(a, l, m - 1, x);
-    else return ham4(a, l + 1, r, x);
+    else return ham4(a, m + 1, r, x);
 }
 
 int check4(int a[], int n, int x)
@@ -156,12 +156,12 @@ int main()
     //Bai3b
     printf("Bai 3b\n");
     q.head = q.tail = -1;
-    for (int i = 1; i <= MAXN; i++) q.a[q.tail++] = i;
+    for (int i = 1; i <= MAXN; i++) q.a[++q.tail] = i;
     printf("Phan tu duoc xoa bang de quy: ");
     ham3b(&q);
     printf("\n");
     q.head = q.tail = -1;
-    for (int i = 1; i <= MAXN; i++) q.a[q.tail++] = i;
+    for (int i = 1; i <= MAXN; i++) q.a[++q.tail] = i;
     printf("Phan tu duoc xoa bang vong lap: ");
     check3b(&q);
     printf("\n\n");
