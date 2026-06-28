@@ -22,7 +22,7 @@ void insert(LinkedList *list, int data) {
         list->head = new;
         return;
     }
-    //Truong hop: data nho hon hoac bang data cua head => chen o dau list
+    //Truong hop: data lon hon hoac bang data cua head => chen o dau list
     if (list->head->data <= data) {
         Node *temp = (Node*)malloc(sizeof(Node));
         temp->data = data;
@@ -32,7 +32,7 @@ void insert(LinkedList *list, int data) {
     }
     //Khoi tao node p la node dau list
     Node *p = list->head;
-    while (p->next != NULL && p->next->data > data) p=p->next; //Duyet tung phan tu cua list, gap phan tu <= data thi stop
+    while (p->next != NULL && p->next->data > data) p=p->next; //Duyet tung phan tu cua list, gap phan tu <= data thi dung
     if (p->next != NULL) {
         Node *temp = (Node*)malloc(sizeof(Node));
         temp->data = data;

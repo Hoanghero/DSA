@@ -83,7 +83,7 @@ int maxNodeLevel(TreeNode *root) {
     for (int i=1; i<h; i++) {
         if (count[i] > count[maxLevel]) maxLevel = i;
     }
-    free(count);
+    // free(count);
     return maxLevel;
 }
 //3.3

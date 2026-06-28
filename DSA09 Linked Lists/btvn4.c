@@ -69,6 +69,9 @@ int main() {
         q1 = add(q1, a[i]);
     }
 
+    printf("Danh sach ban dau: ");
+    printList(h);
+
     printf("Them phan tu tai vi tri k.\n");
     printf("k = ");
     scanf("%d", &k);
@@ -76,13 +79,18 @@ int main() {
     scanf("%d", &value);
     node* p = h;
     h = addAt(h,p,1, k, value);
+    printf("Danh sach sau khi them: ");
     printList(h);
+    printf("\n");
 
+    node* p1 = h1;
+    printf("Danh sach ban dau: ");
+    printList(h1);
     printf("Xoa phan tu tai vi tri k.\n");
     printf("k = ");
     scanf("%d", &k);
-    node* p1 = h1;
     h1 = deleteAt(h1,p1,1, k);
+    printf("Danh sach sau khi xoa: ");
     printList(h1);
     return 0;
 }

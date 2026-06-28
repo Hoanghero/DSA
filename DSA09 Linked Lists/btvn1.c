@@ -69,6 +69,8 @@ int main() {
     for (int i=1; i<6; i++) {
         q1 = add(q1, a[i]);
     }
+    printf("Danh sach ban dau: ");
+    printList(h);
 
     printf("Them phan tu tai vi tri k.\n");
     printf("k = ");
